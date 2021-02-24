@@ -33,11 +33,11 @@ export const Game = () => {
 
   const resetGame = () => {
     // TODO: Reset Game
+    setGameHasStarted(false);
+    jumpTo(0);
   };
 
-  const status = winner
-    ? `Winner: ${winner}`
-    : `${xIsNext ? "X" : "O"} to play`;
+  const status = winner ? `${winner} wins` : `${xIsNext ? "X" : "O"} to play`;
 
   return (
     <>

@@ -21,6 +21,14 @@ const shoot = keyframes`
 export const Container = styled.div`
   width: 100%;
   height: 100%;
+  background: linear-gradient(
+      315deg,
+      rgba(0, 0, 0, 0.84) 0%,
+      rgba(25, 25, 25, 0.84) 74%
+    ),
+    url("https://media.wired.com/photos/5f592bfb643fbe1f6e6807ec/16:9/w_2400,h_1350,c_limit/business_chess_1200074974.jpg");
+  background-size: cover;
+  background-position: center;
 `;
 
 export const LineVertical = styled.div`
@@ -30,7 +38,12 @@ export const LineVertical = styled.div`
   transform: translate(-50px, 0);
   width: 2px;
   height: 100vh;
-  background: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0)
+  );
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 
@@ -86,7 +99,12 @@ export const LineHorizontal = styled.div`
   transform: translate(0, -150px);
   width: 100vw;
   height: 2px;
-  background: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0)
+  );
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 

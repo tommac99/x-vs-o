@@ -14,4 +14,5 @@ export const ResetButton = styled.div`
   padding: 5px 10px;
   text-align: center;
   color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
 `;

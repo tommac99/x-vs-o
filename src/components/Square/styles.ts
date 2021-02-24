@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const SquareButton = styled.div`
+export const SquareButton = styled.div<{ active: boolean }>`
   width: 100%;
   height: 100%;
   background: transparent;
@@ -10,4 +10,13 @@ export const SquareButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${({ active }) =>
+    active &&
+    css`
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    `};
 `;
