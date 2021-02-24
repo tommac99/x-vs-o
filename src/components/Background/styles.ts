@@ -11,7 +11,7 @@ const drop = keyframes`
 
 const shoot = keyframes`
   from {
-    left: -50%;
+    left: -150%;
   }
   to {
     left: 110%;
@@ -32,6 +32,7 @@ export const LineVertical = styled.div`
   height: 100vh;
   background: rgba(255, 255, 255, 0.1);
   overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 
   &:after {
     content: "";
@@ -87,6 +88,7 @@ export const LineHorizontal = styled.div`
   height: 2px;
   background: rgba(255, 255, 255, 0.1);
   overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 
   &:after {
     content: "";
@@ -95,7 +97,7 @@ export const LineHorizontal = styled.div`
     height: 100%;
     width: 40vh;
     top: 0;
-    left: -50%;
+    left: -150%;
     background: linear-gradient(
       to right,
       rgba(255, 255, 255, 0) 0%,

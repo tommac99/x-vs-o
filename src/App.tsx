@@ -1,8 +1,8 @@
-import React from "react";
+import { FC } from "react";
 import "./App.css";
 import { Game, Background } from "./components";
 
-export const App = () => {
+export const App: FC = () => {
   return (
     <div className="App">
       <Background />

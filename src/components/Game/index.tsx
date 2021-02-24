@@ -1,18 +1,21 @@
 import React, { useState } from "react";
-import { Board } from "../index";
+import { Board, GameHistory, ScoreBoard } from "../index";
 import { calculateWinner } from "../../utils/calculateWinner";
 import { useStateWithHistory } from "../../hooks";
+import { ResetButton } from "./styles";
 
 export const Game = () => {
   const [squares, setSquares, { history, moveCursor }] = useStateWithHistory(
     Array(9).fill(null)
   );
+  const [gameHasStarted, setGameHasStarted] = useState(false);
 
   const [xIsNext, setXIsNext] = useState(true);
 
   const winner = calculateWinner(squares);
 
-  function handleClick(i: number) {
+  const handleClick = (i: number) => {
+    setGameHasStarted(true);
     if (winner || squares[i]) {
       return;
     }
@@ -21,38 +24,31 @@ export const Game = () => {
     newSquares[i] = xIsNext ? "X" : "O";
     setSquares(newSquares);
     setXIsNext((v) => !v);
-  }
+  };
 
-  function jumpTo(step: any) {
+  const jumpTo = (step: number) => {
     moveCursor(step);
     setXIsNext(step % 2 === 0);
-  }
+  };
 
-  let status;
-  if (winner) {
-    status = "Winner: " + winner;
-  } else {
-    status = "Next player: " + (xIsNext ? "X" : "O");
-  }
+  const resetGame = () => {
+    // TODO: Reset Game
+  };
 
-  const moves = history.map((step: any, move: any) => {
-    const desc = move ? "Go to move #" + move : "Go to game start";
-    return (
-      <li key={move}>
-        <button onClick={() => jumpTo(move)}>{desc}</button>
-      </li>
-    );
-  });
+  const status = winner
+    ? `Winner: ${winner}`
+    : `${xIsNext ? "X" : "O"} to play`;
 
   return (
-    <div className="game">
-      <div className="game-board">
-        <Board squares={squares} onClick={(i) => handleClick(i)} />
-      </div>
-      <div className="game-info">
-        <div>{status}</div>
-        <ol>{moves}</ol>
-      </div>
-    </div>
+    <>
+      <ResetButton onClick={resetGame}>Reset</ResetButton>
+      <Board squares={squares} onClick={handleClick} />
+      <ScoreBoard status={status} />
+      <GameHistory
+        history={history}
+        jumpTo={jumpTo}
+        gameHasStarted={gameHasStarted}
+      />
+    </>
   );
 };

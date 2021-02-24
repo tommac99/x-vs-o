@@ -5,9 +5,9 @@ export const useStateWithHistory = (initialValue: any) => {
     getInitialState(initialValue)
   );
 
-  function nextValue(value: any) {
+  const nextValue = (value: any) => {
     stackPush(value);
-  }
+  };
 
   const currentValue = stack[cursor];
 
@@ -22,7 +22,7 @@ export const useStateWithHistory = (initialValue: any) => {
   ];
 };
 
-function getInitialState(valueOrFn: any) {
+const getInitialState = (valueOrFn: any) => {
   if (typeof valueOrFn === "undefined") return [];
 
   let initialValue;
@@ -32,4 +32,4 @@ function getInitialState(valueOrFn: any) {
     initialValue = valueOrFn;
   }
   return [initialValue];
-}
+};

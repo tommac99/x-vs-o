@@ -8,22 +8,22 @@ export const useStackWithCursor = (initalArray: any) => {
     setCursor(stack.length - 1);
   }, [stack]);
 
-  function moveCursor(indexPosition: any) {
+  const moveCursor = (indexPosition: any) => {
     setCursor(indexPosition);
-  }
+  };
 
-  function push(value: any) {
+  const push = (value: any) => {
     const nextStack = stack.slice(0, cursor + 1);
     nextStack.push(value);
     setStack(nextStack);
-  }
+  };
 
-  function pop() {
+  const pop = () => {
     const nextStack = stack.slice(0, cursor + 1);
     const popedValue = nextStack.pop();
     setStack(nextStack);
     return popedValue;
-  }
+  };
 
   return {
     stack,
