@@ -32,7 +32,6 @@ export const Game = () => {
   };
 
   const resetGame = () => {
-    // TODO: Reset Game
     setGameHasStarted(false);
     jumpTo(0);
   };
